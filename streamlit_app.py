@@ -203,14 +203,7 @@ def render_transcript(turns):
         else:
             css_turn, css_role, badge = "turn-unknown", "turn-role-unknown", str(role)
 
-        parts.append(f"""
-        <div class="turn {css_turn}">
-            <div class="turn-meta">
-                <span class="{css_role}">{badge}</span>
-                <span class="turn-time">{time_label} · conf {conf:.2f}</span>
-            </div>
-            <div class="turn-text">{text}</div>
-        </div>""")
+        parts.append(f'<div class="turn {css_turn}"><div class="turn-meta"><span class="{css_role}">{badge}</span><span class="turn-time">{time_label} · conf {conf:.2f}</span></div><div class="turn-text">{text}</div></div>')
     return "<div>" + "\n".join(parts) + "</div>"
 
 

@@ -62,8 +62,8 @@ def main():
     print(f"[TRAIN] Total samples: {len(df)}")
     print(f"[TRAIN] Class distribution:\n{df['label'].value_counts().to_string()}\n")
 
-    X = df["text"].astype(str).values
-    y = df["label"].astype(str).values
+    X = df["text"].astype(str).to_numpy()
+    y = df["label"].astype(str).to_numpy()
 
     # -----------------------------------------------------------------------
     # 2. Train/test split (stratified)
