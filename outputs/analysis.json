@@ -1,0 +1,140 @@
+{
+  "timestamp": "2026-05-12T12:12:43.472256+00:00",
+  "filename": "demo_call.wav",
+  "duration_sec": 20.0,
+  "intent": {
+    "intent": "PTP",
+    "confidence": 0.666,
+    "all_scores": {
+      "Already Paid": 0.116,
+      "Ambiguous": 0.249,
+      "PTP": 0.422,
+      "Partial Payment": 0.114,
+      "Refusal": 0.099
+    },
+    "per_turn": [
+      {
+        "start": 5.5,
+        "end": 7.0,
+        "text": "Yes, speaking.",
+        "intent": "Ambiguous",
+        "confidence": 0.433
+      },
+      {
+        "start": 12.5,
+        "end": 16.0,
+        "text": "I will pay the full amount next week by UPI.",
+        "intent": "PTP",
+        "confidence": 0.666
+      }
+    ],
+    "source": "ml"
+  },
+  "intent_label": "PTP",
+  "intent_confidence": 0.666,
+  "entities": {
+    "Amount": [
+      "15000"
+    ],
+    "Date": [
+      "Monday",
+      "next week"
+    ],
+    "Mode": [
+      "UPI"
+    ],
+    "PERSON": [
+      "John",
+      "Sharma"
+    ],
+    "ORG": [
+      "HDFC Bank"
+    ],
+    "LOC": []
+  },
+  "scores": {
+    "Listening": 4,
+    "Communication": 4,
+    "Persuasion": 4,
+    "Outcome": 5
+  },
+  "sentiment": {
+    "label": "POSITIVE",
+    "score": 0.78
+  },
+  "speech_emotion": {
+    "label": "neu",
+    "label_pretty": "Neutral",
+    "score": 0.61
+  },
+  "audio_tone": {
+    "overall": {
+      "label": "neu",
+      "label_pretty": "Neutral",
+      "score": 0.72,
+      "source": "ml"
+    },
+    "by_role": {
+      "COLLECTOR": {
+        "label": "neu",
+        "label_pretty": "Neutral",
+        "score": 0.81,
+        "source": "ml"
+      },
+      "DEBTOR": {
+        "label": "hap",
+        "label_pretty": "Happy",
+        "score": 0.55,
+        "source": "ml"
+      }
+    }
+  },
+  "turns": [
+    {
+      "speaker": "Speaker 1",
+      "role": "COLLECTOR",
+      "speaker_id": "Speaker 1",
+      "start": 0.0,
+      "end": 5.0,
+      "confidence": 0.95,
+      "text": "Hello, this is John from HDFC Bank. Am I speaking with Mr. Sharma?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "role": "DEBTOR",
+      "speaker_id": "Speaker 2",
+      "start": 5.5,
+      "end": 7.0,
+      "confidence": 0.93,
+      "text": "Yes, speaking."
+    },
+    {
+      "speaker": "Speaker 1",
+      "role": "COLLECTOR",
+      "speaker_id": "Speaker 1",
+      "start": 7.5,
+      "end": 12.0,
+      "confidence": 0.92,
+      "text": "Sir, this call is regarding your overdue payment of 15000 rupees."
+    },
+    {
+      "speaker": "Speaker 2",
+      "role": "DEBTOR",
+      "speaker_id": "Speaker 2",
+      "start": 12.5,
+      "end": 16.0,
+      "confidence": 0.94,
+      "text": "I will pay the full amount next week by UPI."
+    },
+    {
+      "speaker": "Speaker 1",
+      "role": "COLLECTOR",
+      "speaker_id": "Speaker 1",
+      "start": 16.5,
+      "end": 20.0,
+      "confidence": 0.95,
+      "text": "Okay, please do so by Monday. Thank you."
+    }
+  ],
+  "diarized": []
+}

@@ -1,0 +1,30 @@
+Intent Classifier — Classification Report
+==========================================
+
+Model: TF-IDF (1-2 grams) + Logistic Regression
+Train: 100 samples | Test: 25 samples
+
+Test accuracy: 0.960
+Test f1_macro: 0.960
+5-fold CV f1_macro: 0.911 (+/- 0.031)
+
+                 precision    recall  f1-score   support
+
+            PTP      0.833     1.000     0.909         5
+Partial Payment      1.000     0.800     0.889         5
+        Refusal      1.000     1.000     1.000         5
+   Already Paid      1.000     1.000     1.000         5
+      Ambiguous      1.000     1.000     1.000         5
+
+       accuracy                          0.960        25
+      macro avg      0.967     0.960     0.960        25
+   weighted avg      0.967     0.960     0.960        25
+
+
+Confusion matrix (rows=actual, cols=predicted)
+Labels: PTP, Partial Payment, Refusal, Already Paid, Ambiguous
+[[5 0 0 0 0]
+ [1 4 0 0 0]
+ [0 0 5 0 0]
+ [0 0 0 5 0]
+ [0 0 0 0 5]]

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>INTELLISCORE — Call Analysis Report</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background:#f8fafc; color:#0f172a; margin:0; padding:32px;
+  }
+  .container { max-width:1100px; margin:0 auto; }
+  .header {
+    background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);
+    color:white; padding:32px; border-radius:14px; margin-bottom:24px;
+    box-shadow:0 8px 28px rgba(30,58,138,.18);
+  }
+  .header h1 { margin:0 0 8px; font-size:28px; font-weight:700; letter-spacing:-.02em; }
+  .header .sub { opacity:.85; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:24px; }
+  .card { background:white; padding:20px; border-radius:12px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .card-label { font-size:11px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
+  .card-value { font-size:22px; font-weight:700; color:#0f172a; }
+  .intent-chip { display:inline-block; padding:4px 12px; border-radius:999px; color:white; font-weight:600; font-size:13px; background:#10b981; }
+  .section { background:white; padding:24px; border-radius:12px; margin-bottom:20px; border:1px solid #e2e8f0; }
+  .section h2 { margin:0 0 16px; font-size:18px; color:#1e293b; }
+  .turn { padding:12px 14px; margin:8px 0; border-radius:8px; }
+  .turn-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+  .turn-badge { font-size:11px; font-weight:700; letter-spacing:.05em; }
+  .turn-time  { font-size:11px; color:#64748b; font-family:"SF Mono",monospace; }
+  .turn-text  { font-size:14px; color:#1e293b; line-height:1.45; }
+  .score-row { display:flex; align-items:center; gap:12px; margin:8px 0; }
+  .score-label { min-width:110px; font-size:13px; color:#475569; font-weight:500; }
+  .score-bar { flex:1; background:#e2e8f0; height:10px; border-radius:5px; overflow:hidden; }
+  .score-fill { background:linear-gradient(90deg,#3b82f6,#1e3a8a); height:100%; border-radius:5px; transition:width .3s; }
+  .score-value { min-width:46px; text-align:right; font-weight:600; font-size:13px; color:#0f172a; }
+  .chip { display:inline-block; padding:4px 10px; border-radius:6px; margin:3px; font-size:12px; color:#0f172a; }
+  .chip-empty { color:#94a3b8; background:#f1f5f9; }
+  .footer { text-align:center; color:#94a3b8; font-size:12px; margin-top:28px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📞 INTELLISCORE — Call Analysis Report</h1>
+    <div class="sub">demo_call.wav &nbsp;•&nbsp; Generated: 2026-05-12T12:12:43.472256+00:00</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-label">Intent</div>
+      <div class="card-value"><span class="intent-chip">PTP</span></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Intent Confidence</div>
+      <div class="card-value">67%</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sentiment</div>
+      <div class="card-value">POSITIVE</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Speech Emotion</div>
+      <div class="card-value">Neutral</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Duration</div>
+      <div class="card-value">00:20</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Turns</div>
+      <div class="card-value">5</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Collector Performance Scores</h2>
+    
+        <div class="score-row">
+          <div class="score-label">Listening</div>
+          <div class="score-bar"><div class="score-fill" style="width:80.0%"></div></div>
+          <div class="score-value">4/5</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Communication</div>
+          <div class="score-bar"><div class="score-fill" style="width:80.0%"></div></div>
+          <div class="score-value">4/5</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Persuasion</div>
+          <div class="score-bar"><div class="score-fill" style="width:80.0%"></div></div>
+          <div class="score-value">4/5</div>
+        </div>
+        <div class="score-row">
+          <div class="score-label">Outcome</div>
+          <div class="score-bar"><div class="score-fill" style="width:100.0%"></div></div>
+          <div class="score-value">5/5</div>
+        </div>
+  </div>
+
+  <div class="section"><h2>Intent Probability Breakdown</h2>
+            <div class="score-row">
+              <div class="score-label" style="min-width:130px">PTP</div>
+              <div class="score-bar"><div class="score-fill" style="width:42.2%;background:#10b981"></div></div>
+              <div class="score-value">42%</div>
+            </div>
+            <div class="score-row">
+              <div class="score-label" style="min-width:130px">Ambiguous</div>
+              <div class="score-bar"><div class="score-fill" style="width:24.9%;background:#10b981"></div></div>
+              <div class="score-value">25%</div>
+            </div>
+            <div class="score-row">
+              <div class="score-label" style="min-width:130px">Already Paid</div>
+              <div class="score-bar"><div class="score-fill" style="width:11.6%;background:#10b981"></div></div>
+              <div class="score-value">12%</div>
+            </div>
+            <div class="score-row">
+              <div class="score-label" style="min-width:130px">Partial Payment</div>
+              <div class="score-bar"><div class="score-fill" style="width:11.4%;background:#10b981"></div></div>
+              <div class="score-value">11%</div>
+            </div>
+            <div class="score-row">
+              <div class="score-label" style="min-width:130px">Refusal</div>
+              <div class="score-bar"><div class="score-fill" style="width:9.9%;background:#10b981"></div></div>
+              <div class="score-value">10%</div>
+            </div></div>
+
+  <div class="section"><h2>Audio Tone Detection (per-speaker)</h2><div style="display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:200px;background:white;border-radius:10px;border:1px solid #e2e8f0;padding:16px;border-left:4px solid #6366f1;"><div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Overall Call</div><div style="font-size:20px;font-weight:700;color:#0f172a">Neutral</div><div style="font-size:12px;color:#64748b;margin-top:4px">Confidence: 72%</div></div><div style="flex:1;min-width:200px;background:white;border-radius:10px;border:1px solid #e2e8f0;padding:16px;border-left:4px solid #1e3a8a;"><div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Collector Tone</div><div style="font-size:20px;font-weight:700;color:#0f172a">Neutral</div><div style="font-size:12px;color:#64748b;margin-top:4px">Confidence: 81%</div></div><div style="flex:1;min-width:200px;background:white;border-radius:10px;border:1px solid #e2e8f0;padding:16px;border-left:4px solid #10b981;"><div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Debtor Tone</div><div style="font-size:20px;font-weight:700;color:#0f172a">Happy</div><div style="font-size:12px;color:#64748b;margin-top:4px">Confidence: 55%</div></div></div></div>
+
+  <div class="section">
+    <h2>Extracted Entities</h2>
+    <div style="margin-bottom:10px"><strong>Amount:</strong> <span class='chip' style='background:#dbeafe'>15000</span></div>
+    <div style="margin-bottom:10px"><strong>Date:</strong> <span class='chip' style='background:#fef3c7'>Monday</span><span class='chip' style='background:#fef3c7'>next week</span></div>
+    <div><strong>Payment Mode:</strong> <span class='chip' style='background:#dcfce7'>UPI</span></div>
+  </div>
+
+  <div class="section">
+    <h2>Transcript</h2>
+    
+        <div class="turn" style="background:#eff6ff;border-left:4px solid #1e3a8a">
+          <div class="turn-meta">
+            <span class="turn-badge" style="color:#1e3a8a">COLLECTOR</span>
+            <span class="turn-time">00:00 – 00:05</span>
+          </div>
+          <div class="turn-text">Hello, this is John from HDFC Bank. Am I speaking with Mr. Sharma?</div>
+        </div>
+
+        <div class="turn" style="background:#ecfdf5;border-left:4px solid #065f46">
+          <div class="turn-meta">
+            <span class="turn-badge" style="color:#065f46">DEBTOR</span>
+            <span class="turn-time">00:05 – 00:07</span>
+          </div>
+          <div class="turn-text">Yes, speaking.</div>
+        </div>
+
+        <div class="turn" style="background:#eff6ff;border-left:4px solid #1e3a8a">
+          <div class="turn-meta">
+            <span class="turn-badge" style="color:#1e3a8a">COLLECTOR</span>
+            <span class="turn-time">00:07 – 00:12</span>
+          </div>
+          <div class="turn-text">Sir, this call is regarding your overdue payment of 15000 rupees.</div>
+        </div>
+
+        <div class="turn" style="background:#ecfdf5;border-left:4px solid #065f46">
+          <div class="turn-meta">
+            <span class="turn-badge" style="color:#065f46">DEBTOR</span>
+            <span class="turn-time">00:12 – 00:16</span>
+          </div>
+          <div class="turn-text">I will pay the full amount next week by UPI.</div>
+        </div>
+
+        <div class="turn" style="background:#eff6ff;border-left:4px solid #1e3a8a">
+          <div class="turn-meta">
+            <span class="turn-badge" style="color:#1e3a8a">COLLECTOR</span>
+            <span class="turn-time">00:16 – 00:20</span>
+          </div>
+          <div class="turn-text">Okay, please do so by Monday. Thank you.</div>
+        </div>
+  </div>
+
+  <div class="footer">INTELLISCORE • AI-driven debt-collection call analysis • 2026-05-12T12:12:43.472256+00:00</div>
+</div>
+</body>
+</html>

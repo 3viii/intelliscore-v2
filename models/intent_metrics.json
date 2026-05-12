@@ -1,0 +1,105 @@
+{
+  "model_type": "TF-IDF + Logistic Regression",
+  "classes": [
+    "PTP",
+    "Partial Payment",
+    "Refusal",
+    "Already Paid",
+    "Ambiguous"
+  ],
+  "n_train": 100,
+  "n_test": 25,
+  "accuracy": 0.96,
+  "f1_macro": 0.9595959595959596,
+  "cv_f1_macro_mean": 0.9105050505050505,
+  "cv_f1_macro_std": 0.03107665677098525,
+  "confusion_matrix": [
+    [
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      4,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      5
+    ]
+  ],
+  "labels_order": [
+    "PTP",
+    "Partial Payment",
+    "Refusal",
+    "Already Paid",
+    "Ambiguous"
+  ],
+  "classification_report": {
+    "PTP": {
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "f1-score": 0.9090909090909091,
+      "support": 5.0
+    },
+    "Partial Payment": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1-score": 0.8888888888888888,
+      "support": 5.0
+    },
+    "Refusal": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 5.0
+    },
+    "Already Paid": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 5.0
+    },
+    "Ambiguous": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 5.0
+    },
+    "accuracy": 0.96,
+    "macro avg": {
+      "precision": 0.9666666666666668,
+      "recall": 0.96,
+      "f1-score": 0.9595959595959596,
+      "support": 25.0
+    },
+    "weighted avg": {
+      "precision": 0.9666666666666667,
+      "recall": 0.96,
+      "f1-score": 0.9595959595959596,
+      "support": 25.0
+    }
+  }
+}

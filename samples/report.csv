@@ -1,0 +1,2 @@
+call_id,filename,timestamp,intent,intent_confidence,amounts,dates,modes,listening,communication,persuasion,outcome,text_sentiment,speech_emotion,n_turns,duration_sec
+demo_001,demo_call.wav,2026-05-12T12:12:43.472256+00:00,PTP,0.666,15000,Monday|next week,UPI,4,4,4,5,POSITIVE,Neutral,5,20.0

@@ -1,0 +1,5 @@
+[COLLECTOR] Hello, this is John from HDFC Bank. Am I speaking with Mr. Sharma?
+[DEBTOR] Yes, speaking.
+[COLLECTOR] Sir, this call is regarding your overdue payment of 15000 rupees.
+[DEBTOR] I will pay the full amount next week by UPI.
+[COLLECTOR] Okay, please do so by Monday. Thank you.

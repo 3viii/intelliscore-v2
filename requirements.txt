@@ -1,0 +1,30 @@
+# ---- Original (stable) deps — versions left flexible to match your environment ----
+streamlit
+faster-whisper
+pyannote.audio==3.1.1
+transformers
+librosa
+soundfile
+torch
+python-dotenv
+pydantic
+pytest
+numpy
+vaderSentiment
+
+# ---- New: custom intent classifier (TF-IDF + Logistic Regression) ----
+scikit-learn>=1.3
+joblib>=1.3
+
+# ---- New: dashboard analytics & exports ----
+pandas
+plotly
+
+# ---- Optional: microphone recording fallback for Streamlit < 1.36 ----
+# Not needed when running modern Streamlit (st.audio_input is built-in).
+# Uncomment if your Streamlit doesn't have st.audio_input:
+# streamlit-mic-recorder
+
+# ---- Training-time only (used by scripts/train_intent_model.py) ----
+matplotlib
+seaborn
