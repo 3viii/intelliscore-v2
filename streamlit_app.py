@@ -13,9 +13,11 @@ import sys
 import json
 import tempfile
 import traceback
+import time
 from pathlib import Path
 from datetime import datetime
 
+import numpy as np
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -362,8 +364,12 @@ with upload_col:
     if file_arg:
         st.info(f"📂 Loaded from command line: `{Path(file_arg).name}`")
 
-    # ----- Tabs: Upload file  |  Record from mic ---------------------------
-    tab_upload, tab_record = st.tabs(["📁 Upload audio file", "🎙️  Record from microphone"])
+    # ----- Tabs: Upload file  |  Record from mic  |  Live Analysis -----------
+    tab_upload, tab_record, tab_live = st.tabs([
+        "📁 Upload audio file", 
+        "🎙️  Record from microphone",
+        "🔴 Live Analysis"
+    ])
 
     uploaded_file = None
     recorded_audio = None
@@ -426,6 +432,113 @@ with upload_col:
                     "and the bundled demo transcript will be used. Switch to **whisper_local** in the "
                     "sidebar to analyse your recording."
                 )
+    
+    # ========== LIVE ANALYSIS TAB ==========
+    with tab_live:
+        from src.streaming.ui import (
+            render_streaming_controls, 
+            render_live_stats, 
+            render_live_transcript,
+            render_live_intent_bars,
+            render_live_emotion_indicators,
+            run_streaming_session,
+            display_final_report,
+            render_live_badge
+        )
+        
+        st.markdown("## 🔴 Real-time Call Analysis")
+        st.caption(
+            "Stream audio from your microphone and analyze in real-time. "
+            "Results are continuously updated as you speak. "
+            "When you stop, the system performs final high-accuracy analysis."
+        )
+        
+        if method == "mock":
+            st.warning(
+                "⚠️  Live streaming is not available in **mock** mode. "
+                "Switch to **whisper_local** mode in the sidebar to enable streaming."
+            )
+        else:
+            # Initialize session state for streaming
+            if "streaming_active" not in st.session_state:
+                st.session_state["streaming_active"] = False
+                st.session_state["streaming_stop_signal"] = False
+            
+            # Check if we have a final result to display
+            from src.streaming.state import StreamingState
+            state = StreamingState.get_from_session()
+            
+            if state.final_result:
+                # Show final report
+                render_live_badge()
+                st.info("✅ Analysis complete! Final report displayed below.")
+                display_final_report(state.final_result)
+                
+                if st.button("🔄 Start New Session", use_container_width=True):
+                    state.reset()
+                    StreamingState.save_to_session(state)
+                    st.rerun()
+            
+            elif state.is_active:
+                # Show live stream interface
+                render_live_badge()
+                
+                start_btn, stop_btn, reset_btn = render_streaming_controls()
+                
+                if stop_btn:
+                    st.session_state["streaming_stop_signal"] = True
+                    st.info("Stopping recording and running final analysis...")
+                    state.stop_session()
+                    StreamingState.save_to_session(state)
+                    time.sleep(1)
+                    # Run aggregation
+                    from src.streaming.aggregator import ChunkAggregator
+                    import soundfile
+                    if state.chunks and state.merged_audio_path:
+                        st.info("Running final aggregation...")
+                        all_chunks = [np.array(c.text) for c in state.chunks if hasattr(c, 'text')]
+                        aggregator = ChunkAggregator()
+                        aggregator.load_resources()
+                        # This would need the actual merged audio...
+                        st.warning("Final aggregation logic needs implementation")
+                
+                if reset_btn:
+                    state.reset()
+                    StreamingState.save_to_session(state)
+                    st.rerun()
+                
+                st.write("---")
+                render_live_stats()
+                st.write("---")
+                col1, col2 = st.columns(2)
+                with col1:
+                    render_live_intent_bars()
+                with col2:
+                    render_live_emotion_indicators()
+                st.write("---")
+                render_live_transcript()
+            
+            else:
+                # Initial state - show start button
+                start_btn, _, _ = render_streaming_controls()
+                
+                if start_btn:
+                    st.session_state["streaming_active"] = True
+                    st.session_state["streaming_stop_signal"] = False
+                    
+                    try:
+                        final_result = run_streaming_session()
+                        if final_result:
+                            display_final_report(final_result)
+                        else:
+                            st.warning("Streaming cancelled or no audio captured.")
+                    except Exception as e:
+                        st.error(f"Streaming error: {e}")
+                        import traceback
+                        with st.expander("Show traceback"):
+                            st.code(traceback.format_exc())
+                    finally:
+                        st.session_state["streaming_active"] = False
 
 with info_col:
     if method == "mock":

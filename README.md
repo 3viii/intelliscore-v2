@@ -2,15 +2,14 @@
 
 > Production-style debt-collection call analysis: ASR + speaker diarization +
 > custom-trained intent classifier + entity extraction + collector scoring +
-> live-mic recording + **per-speaker audio tone detection**, all surfaced
-> through a polished Streamlit dashboard.
+> **🆕 LIVE STREAMING + real-time updates** + per-speaker audio tone detection,
+> all surfaced through a polished Streamlit dashboard.
 
 ---
 
 ## ✨ What this project does
 
-Given a recorded debt-collection call (uploaded **or recorded live in the
-browser**), INTELLISCORE produces:
+Given a call (uploaded, recorded live, **or streamed in real-time** 🔴), INTELLISCORE produces:
 
 1. **Speaker-attributed transcript** (Whisper + Pyannote, with role assignment for COLLECTOR / DEBTOR)
 2. **Intent classification** — *PTP · Partial Payment · Refusal · Already Paid · Ambiguous* — via a custom-trained TF-IDF + Logistic Regression model with confidence scores
@@ -20,6 +19,42 @@ browser**), INTELLISCORE produces:
 6. **Collector performance scores** (Listening, Communication, Persuasion, Outcome — each 1-5)
 7. **Polished HTML report**, JSON, CSV and TXT exports
 8. **Persistent SQLite store** of every analysed call
+9. **🆕 Real-time streaming** with live dashboard updates (NEW in v2.2!)
+
+---
+
+## 🆕 What's new in v2.2 — Live Streaming Analysis
+
+### 🔴 Live Streaming Mode (NEW!)
+A powerful third input mode alongside **Upload** and **Record**:
+
+- **Stream audio from microphone continuously**
+- **See live updates every 4 seconds**: transcript, intent, emotion, tone
+- **After stopping**: automatic final high-accuracy analysis with merged diarization
+- **Same professional results** as upload/record modes
+
+**How it works:**
+1. Click **🔴 Live Analysis** tab
+2. Click **▶️ Start Live Analysis**
+3. Speak into microphone (watch transcript update live)
+4. Click **⏹️ Stop** when done
+5. Final analysis runs automatically (~1-2 min)
+6. Results displayed + exported + stored
+
+**Why this is better:**
+- See analysis happening in real-time
+- More responsive user experience
+- Same final accuracy (merged diarization pass)
+- Perfect for live call monitoring / QA
+
+**Under the hood:**
+- Chunk-based streaming (4-sec chunks)
+- Incremental Whisper + intent/sentiment/tone analysis
+- Final merged diarization for accuracy
+- Thread-based non-blocking architecture
+- Graceful error handling & fallback
+
+**See:** [STREAMING_GUIDE.md](STREAMING_GUIDE.md) and [STREAMING_ARCHITECTURE.md](STREAMING_ARCHITECTURE.md) for full details.
 
 ---
 

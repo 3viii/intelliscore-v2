@@ -20,6 +20,9 @@ joblib>=1.3
 pandas
 plotly
 
+# ---- NEW: Streaming/Live Analysis ----
+sounddevice>=0.4.5
+
 # ---- Optional: microphone recording fallback for Streamlit < 1.36 ----
 # Not needed when running modern Streamlit (st.audio_input is built-in).
 # Uncomment if your Streamlit doesn't have st.audio_input:
